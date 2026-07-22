@@ -11,33 +11,27 @@
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar__inner">
-    <div class="seal" aria-hidden="true">
-      <img src="{{ url_for('static', filename='img/logo-kejaksaan.png') }}" alt="" class="seal__logo">
-    </div>
-    <div class="topbar__text">
-      <p class="eyebrow">Kejaksaan Tinggi Jawa Tengah &mdash; Bidang Daskrimti</p>
-      <h1>Sistem Rekapitulasi Absensi Otomatis</h1>
-      <p class="topbar__sub">Diproses dan disimpan sepenuhnya di perangkat ini &mdash; tidak ada data yang dikirim ke luar.</p>
-    </div>
-    <div class="topbar__right">
-      <div class="topbar__actions">
-        <a href="{{ url_for('dashboard') }}" class="btn btn--ghost btn--sm">Dashboard</a>
-        <span class="topbar__admin">{{ admin_nama }}</span>
-        <form method="post" action="{{ url_for('logout') }}" class="logout-form">
-          <button type="submit" class="btn btn--ghost btn--sm">Keluar</button>
-        </form>
-      </div>
-      <div class="topbar__badge" id="statusBadge">
-        <span class="dot"></span>
-        <span id="statusBadgeText">Siap</span>
-      </div>
-    </div>
-  </div>
-</header>
+<div class="app-shell">
+{% include "_sidebar.html" %}
 
-<main class="layout">
+<div class="main">
+  <header class="main__header">
+    <div class="main__header-left">
+      <button type="button" class="sidebar__toggle" id="sidebarToggle" aria-label="Buka menu" aria-controls="sidebar" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div>
+        <h1>Rekapitulasi Absensi</h1>
+        <p class="main__header-sub">Diproses &amp; disimpan sepenuhnya di perangkat ini &mdash; tidak ada data yang dikirim ke luar.</p>
+      </div>
+    </div>
+    <div class="topbar__badge" id="statusBadge">
+      <span class="dot"></span>
+      <span id="statusBadgeText">Siap</span>
+    </div>
+  </header>
+
+<main class="main__content">
 
   <section class="stats" aria-label="Ringkasan proses">
     <div class="stat-card">
@@ -144,6 +138,10 @@
   <p>Dibangun untuk mendukung efisiensi kerja Bidang Daskrimti &middot; Kejaksaan Tinggi Jawa Tengah &middot; Prototipe versi lokal</p>
 </footer>
 
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
